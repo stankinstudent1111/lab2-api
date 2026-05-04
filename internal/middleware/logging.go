@@ -11,8 +11,10 @@ func Logging(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r)
 
 		log.Printf(
-			"[%s] Запрос пришел",
+			"[%s] %s %s",
 			r.Method,
+			r.RequestURI,
+			r.RemoteAddr,
 		)
 	})
 }
